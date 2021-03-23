@@ -1,0 +1,27 @@
+<h1> New Post Form</h1>
+
+<% if flash[:errors]%>
+    <% flash[:errors].each do |error|%>
+        <p style = "color: red; "><%= error %></p>
+    <% end %>
+<% end %>
+
+<%= form_for @post do |f|%>
+    <%= f.label "Hello Title" %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %><br>
+
+    <%= f.hidden_field :likes, :value =>0 %>
+
+    <%= f.label "Blogger" %>
+    <%= f.collection_select :blogger_id, @bloggers, :id, :name %><br>
+
+    <%= f.label "Destination" %>
+    <%= f.collection_select :destination_id, @destinations, :id, :name %><br>
+
+    <%= f.submit%>
+
+
+<% end %>

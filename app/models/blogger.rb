@@ -11,5 +11,12 @@ class Blogger < ApplicationRecord
         self.posts.map {|post| post.likes}.sum
     end
 
+    def featured_post
+        if self.posts.count > 0
+            self.posts.sort {|post_a, post_b| post_b.likes <=> post_a.likes}.first
+        else    
+            "This blogger has not written any posts"
+        end
+    end
 
 end

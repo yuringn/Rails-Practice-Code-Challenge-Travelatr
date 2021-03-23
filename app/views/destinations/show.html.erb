@@ -1,0 +1,27 @@
+<h1>Show Page for <%= @destination.name %>, <%= @destination.country %></h1>
+
+<% if @destination.posts.count > 0 %>
+    <p>Featured Post: <%= link_to @destination.featured_post.title, post_path(@destination.featured_post.id)%></p>
+<% else %>
+    <p>Feature Post: No posts about this destination</p>    
+<% end %>    
+<p>Average Blogger Age: <%= @destination.average_blogger_age %></p>
+
+<h3>Most Recent Posts</h3>
+
+<ol>
+<% @destination.most_recent_five.each do |post| %>
+        <li><%= link_to post.title, post_path(post.id) %></li>
+        <ul>
+            <li><%= post.created_at %></li>
+        </ul>   
+<% end %>
+</ol>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h5>TRENDY DESTINATION...PEOPLE ARE TALKING..PAY MONEY TO VISIT THIS PLACE!!!!!!</h5>
+<h6><%= link_to @most_popular.name, destination_path(@most_popular) %></h6>

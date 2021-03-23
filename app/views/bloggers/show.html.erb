@@ -4,5 +4,8 @@
 <p>Age: <%= @blogger.age%> </p>
 <p>Bio: <%= @blogger.bio %></p>
 <p>Total Likes of ALLLL TIMEEEE: <%= @blogger.total_likes%></p>
-
-  most featured posts
+<% if @blogger.posts.count > 0 %>
+  <p>Featured Post: <%= link_to @blogger.featured_post.title, post_path(@blogger.featured_post.id)%></p>
+<% else %>
+  <p>This blogger has not written any posts</p>
+<% end %>
